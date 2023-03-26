@@ -1,5 +1,5 @@
 local ts = vim.treesitter
-local ts_util = require('lua.neoassist.treesitter')
+local ts_util = require('neoassist.treesitter')
 
 local M = {}
 

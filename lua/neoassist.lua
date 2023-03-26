@@ -8,8 +8,8 @@ local ts = vim.treesitter
 local uv = vim.loop
 
 api.nvim_create_user_command('Neoassist', function(params)
-  local header = require('lua.neoassist.header')
-  local source = require('lua.neoassist.source')
+  local header = require('neoassist.header')
+  local source = require('neoassist.source')
 
   local path = api.nvim_buf_get_name(0)
   local parser = ts.get_parser()

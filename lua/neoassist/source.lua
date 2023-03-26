@@ -3,8 +3,8 @@ local uv = vim.loop
 local ts = vim.treesitter
 local fn = vim.fn
 
-local ts_util = require('lua.neoassist.treesitter')
-local fs = require('lua.neoassist.filesystem')
+local ts_util = require('neoassist.treesitter')
+local fs = require('neoassist.filesystem')
 
 local M = {
   header_bufnr = -1,
