@@ -13,13 +13,13 @@ Simple C++ code generation implemented purely in lua.
 
 ## Installation
 
-[lazy.nvim]:
+[lazy.nvim](https://github.com/folke/lazy.nvim):
 ```lua
 require('lazy').setup({
   'eriks47/neoassist'
 })
 ```
-[vim-plug]:
+[vim-plug](https://github.com/junegunn/vim-plug):
 ```vim
 Plug 'eriks47/neoassist'
 ```
