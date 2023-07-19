@@ -6,6 +6,8 @@ Generate C++ class method implementations.
 
 ## Preview
 
+https://github.com/eriks47/neoassist/assets/90338990/c91c8f67-1a25-4967-9972-9300e30bf9fc
+
 ## :sparkles: Features
 
 - Header file creation
