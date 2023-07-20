@@ -33,5 +33,5 @@ Plug 'eriks47/generate.nvim'
 
 ## :rocket: Usage
 
-To generate method implementations simply run `:Generate createImplemenation`
+To generate method implementations simply run `:Generate implementations`
 from the header file.
