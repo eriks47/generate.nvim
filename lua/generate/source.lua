@@ -27,6 +27,7 @@ local default_param_query = ts.parse_query(
 ]]
 )
 
+-- TODO: Delegate this to user config
 local brace_pattern = '\n{\n\n}\n\n'
 
 local function is_include_present(root, bufnr, include)
@@ -89,21 +90,12 @@ local function get_implemenations(root)
   return strings
 end
 
-local function open_source_buffer(source_path)
-  api.nvim_command('e ' .. source_path)
-  local bufnr = api.nvim_get_current_buf()
-  local parser = ts.get_parser()
-  local root = parser:parse()[1]:root()
-
-  return root, bufnr
-end
-
 function M.implement_methods(namespaces)
   local path = api.nvim_buf_get_name(0)
-  local root, _ = open_source_buffer(path)
+  local root, _ = fs.open_file_in_buffer(path)
 
   local strings = {}
-  local existing_implemenations = get_implemenations(root, M.source_bufnr)
+  local existing_implemenations = get_implemenations(root)
   for _, v in pairs(namespaces) do
     local name = v['name']
     for i = 1, #v['declarations'] do
@@ -127,13 +119,11 @@ function M.insert_header(header_path)
 
   local header_bufnr = api.nvim_get_current_buf()
   M.header_bufnr = header_bufnr
-  local root, source_bufnr = open_source_buffer(source_path)
+  local root, source_bufnr = fs.open_file_in_buffer(source_path)
   M.source_bufnr = source_bufnr
 
   if not is_include_present(root, M.source_bufnr, header_text) then
-    local fd = uv.fs_open(source_path, 'a', 438)
-    uv.fs_write(fd, header_text .. '\n\n', 0)
-    uv.fs_close(fd)
+    fs.append_to_file(source_path, header_text .. '\n\n')
   end
 end
 
