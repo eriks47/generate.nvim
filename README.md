@@ -1,4 +1,4 @@
-# Neoassist
+# generate.nvim
 
 Generate C++ class method implementations.
 
@@ -10,23 +10,28 @@ https://github.com/eriks47/neoassist/assets/90338990/c91c8f67-1a25-4967-9972-930
 
 ## :sparkles: Features
 
-- Header file creation
-- Method implemenation generation
+- [x] Generate method implementations
+- [x] Never delete anything
+- [x] Multiple classes and namespaces in a file
+- [x] Incremental implementation generation
+- [ ] Declaration (header) generation
+- [ ] User configuration support
+- [ ] Handle nesting in namespaces
 
 ## :package: Installation
 
 [lazy.nvim](https://github.com/folke/lazy.nvim):
 ```lua
 require('lazy').setup({
-  'eriks47/neoassist'
+  'eriks47/generate.nvim'
 })
 ```
 [vim-plug](https://github.com/junegunn/vim-plug):
 ```vim
-Plug 'eriks47/neoassist'
+Plug 'eriks47/generate.nvim'
 ```
 
 ## :rocket: Usage
 
-To generate method implementations simply run `:Neoassist createImplemenation`
+To generate method implementations simply run `:Generate createImplemenation`
 from the header file.
