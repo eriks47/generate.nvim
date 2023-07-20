@@ -21,6 +21,10 @@ function M.header_to_source(header_name)
     header_extension = w
   end
 
+  if source_extension == '' or header_extension == '' then
+    api.nvim_err_writeln('Error: Cannot determine the extension of ' .. header_name)
+  end
+
   header_extension = '%' .. header_extension
   local source_path = string.gsub(header_name, header_extension, source_extension)
 

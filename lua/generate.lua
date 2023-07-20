@@ -27,6 +27,6 @@ end, {
   nargs = 1,
   addr = 'other',
   complete = function()
-    return { 'implementations' }
+    return { 'implementations', 'declarations' }
   end,
 })
