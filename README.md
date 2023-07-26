@@ -18,6 +18,7 @@ https://github.com/eriks47/neoassist/assets/90338990/c91c8f67-1a25-4967-9972-930
 - [ ] User configuration support
 - [ ] Handle nesting in namespaces
 - [ ] Error handling
+- [ ] Handle Windows paths
 
 ## :package: Installation
 
