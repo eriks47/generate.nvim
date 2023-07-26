@@ -22,6 +22,9 @@ function M.get_declarations(root)
   for k, v in pairs(namespaces) do
     local identifier = ts_util.first_child_with_type('type_identifier', k)
     if identifier == nil then
+      identifier = ts_util.first_child_with_type('namespace_identifier', k)
+    end
+    if identifier == nil then
       identifier = ts_util.first_child_with_type('identifier', k)
     end
     local text = ts.get_node_text(identifier, 0, {})
