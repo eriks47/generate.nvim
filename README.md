@@ -22,14 +22,21 @@ https://github.com/eriks47/neoassist/assets/90338990/c91c8f67-1a25-4967-9972-930
 
 ## :package: Installation
 
+The plugin depends on [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+and the C++ parser, which can be installed via `:TSInstall cpp`
+
 [lazy.nvim](https://github.com/folke/lazy.nvim):
 ```lua
 require('lazy').setup({
-  'eriks47/generate.nvim'
+  {
+    'eriks47/generate.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' }
+  }
 })
 ```
 [vim-plug](https://github.com/junegunn/vim-plug):
 ```vim
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'eriks47/generate.nvim'
 ```
 
