@@ -46,7 +46,7 @@ local function attempt_to_change_to_source_dir(source_path)
   local name, type = uv.fs_scandir_next(file)
   while name ~= nil do
     for i = 1, #source_dir_names do
-      if source_dir_names[i] == name and type == 'directory' then
+      if source_dir_names[i] == string.lower(name) and type == 'directory' then
         return directory_above .. '/' .. name .. filename
       end
     end
