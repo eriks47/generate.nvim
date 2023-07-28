@@ -20,7 +20,7 @@ https://github.com/eriks47/neoassist/assets/90338990/c91c8f67-1a25-4967-9972-930
 - [ ] Error handling
 - [ ] Handle Windows paths
 - [ ] Improved header to source mapping (see [ourboros.nvim](https://github.com/jakemason/ouroboros.nvim))
-- [ ] Convert plugin to filetype plugin
+- [x] Filetype plugin
 
 ## :package: Installation
 
