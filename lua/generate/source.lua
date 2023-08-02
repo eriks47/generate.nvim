@@ -110,6 +110,11 @@ function M.implement_methods(namespaces)
   local fd = uv.fs_open(path, 'a', 438)
   uv.fs_write(fd, strings, 0)
   uv.fs_close(fd)
+
+  -- It is neccessary to reload the buffer because
+  -- in some cases Neovim doesn't render the newly
+  -- added text.
+  api.nvim_command(":edit")
 end
 
 function M.insert_header(header_path)
