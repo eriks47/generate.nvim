@@ -34,7 +34,7 @@ local function is_include_present(root, bufnr, include)
   local includes = ts_util.children_with_type('preproc_include', root)
   for i = 1, #includes do
     local text = ts.get_node_text(includes[i], bufnr, {})
-    if text == include .. '\n' then
+    if string.match(text, include) then
       return true
     end
   end
@@ -122,7 +122,7 @@ function M.insert_header(header_path)
   local root, source_bufnr = fs.open_file_in_buffer(source_path)
   M.source_bufnr = source_bufnr
 
-  if not is_include_present(root, M.source_bufnr, header_text) then
+  if not is_include_present(root, M.source_bufnr, name) then
     fs.append_to_file(source_path, header_text .. '\n\n')
   end
 end

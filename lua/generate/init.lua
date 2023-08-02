@@ -1,6 +1,6 @@
--- if vim.g.loaded_generate ~= nil then
-  -- return
--- end
+if vim.g.loaded_generate ~= nil then
+  return
+end
 vim.g.loaded_generate = true
 
 local M = {}
