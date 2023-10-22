@@ -13,12 +13,17 @@ local class_query = ts.parse_query(
 )
 
 function M.get_declarations(root)
-  -- Todo handle multiple classes/namespaces
+  -- The first thing we need is to find all classes and
+  -- namespaces so that we know "where to look" for functions
+  -- and methods that we have to implement
   local namespaces = {}
   for _, node, _ in class_query:iter_captures(root, 0) do
     namespaces[node] = {}
   end
 
+  -- After we have all roots for classes and namespaces we need
+  -- to find their names; this is necessary because an implementation
+  -- must contain the relevant namespace name (e.g. Window::Create())
   for k, v in pairs(namespaces) do
     local identifier = ts_util.first_child_with_type('type_identifier', k)
     if identifier == nil then
@@ -37,7 +42,7 @@ function M.get_declarations(root)
     if fields == nil then
       fields = ts_util.first_child_with_type('declaration_list', k)
       if fields == nil then
-        error('Fields is fucking nil')
+        error('Failed to find fields')
       end
     end
     for node in fields:iter_children() do
