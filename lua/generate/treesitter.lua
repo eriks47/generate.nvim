@@ -21,6 +21,21 @@ function M.is_function_declaration(node)
     return false
   end
 
+  -- This is needed to understand whether the node is a pure
+  -- virtual function, in which case we should return false,
+  -- because it should not be implemented. The way a pure
+  -- virtual function can be detected is by looking for
+  -- 'number_literal' nodes on the same level or under ERROR nodes.
+  local numbers = M.children_with_type('number_literal', node)
+  local errors = M.children_with_type('ERROR', node)
+  local numbers_from_error = {}
+  if #errors ~= 0 then
+    numbers_from_error = M.children_with_type('number_literal', errors[1])
+  end
+  if #numbers >= 1 or #numbers_from_error >= 1 then
+    return false
+  end
+
   local declrators = M.children_with_type('function_declarator', node)
   if #declrators ~= 0 then
     return true
