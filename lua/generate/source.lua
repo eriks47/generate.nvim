@@ -11,7 +11,7 @@ local M = {
   source_bufnr = -1,
 }
 
-local declaration_query = ts.query.parse_query(
+local declaration_query = ts_util.parse_query_wrapper(
   'cpp',
   [[
     ((function_definition) @method)
@@ -20,7 +20,7 @@ local declaration_query = ts.query.parse_query(
 ]]
 )
 
-local default_param_query = ts.query.parse_query(
+local default_param_query = ts_util.parse_query_wrapper(
   'cpp',
   [[
     ((optional_parameter_declaration) @parameter)

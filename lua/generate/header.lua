@@ -3,7 +3,7 @@ local ts_util = require('generate.treesitter')
 
 local M = {}
 
-local class_query = ts.query.parse_query(
+local class_query = ts_util.parse_query_wrapper(
   'cpp',
   [[
     ((class_specifier) @class)

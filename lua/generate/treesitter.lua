@@ -1,4 +1,14 @@
+local ts = vim.treesitter
+
 local M = {}
+
+function M.parse_query_wrapper(lang, query)
+  if ts.query.parse ~= nil then
+    return ts.query.parse(lang, query)
+  end
+
+  return ts.query.parse_query(lang, query)
+end
 
 function M.children_with_type(type, parent)
   local found = {}
