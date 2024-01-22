@@ -17,11 +17,15 @@ local exension_index = {
 local source_dir_names = { 'source', 'src' }
 local include_dir_names = { 'include', 'inc' }
 
+-- use \ as separator for paths if on Windows
+local is_windows = vim.fn.has("win32") or vim.fn.has("win64")
+local separator = is_windows and "\\" or "/"
+
 -- Logically is something like 'cd ..'
 local function remove_basename(filepath)
   local first = nil
   for i = #filepath, 1, -1 do
-    if string.sub(filepath, i, i) == '/' then
+    if string.sub(filepath, i, i) == separator then
       first = i
       break
     end
