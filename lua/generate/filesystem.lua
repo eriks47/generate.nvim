@@ -4,6 +4,7 @@ local api = vim.api
 local ts = vim.treesitter
 local uv = vim.loop
 local fs = vim.fs
+local fn = vim.fn
 
 local exension_index = {
   ['.hpp'] = '.cpp',
@@ -17,12 +18,16 @@ local exension_index = {
 local source_dir_names = { 'source', 'src' }
 local include_dir_names = { 'include', 'inc' }
 
--- use \ as separator for paths if on Windows
-local is_windows = vim.fn.has("win32") or vim.fn.has("win64")
-local separator = is_windows and "\\" or "/"
+local is_windows = fn.has("win32") or fn.has("win64")
 
 -- Logically is something like 'cd ..'
 local function remove_basename(filepath)
+  -- use \ as separator for paths if on Windows
+  local separator = "/"
+  if is_windows ~= 0 then
+    separator = "\\"
+  end
+
   local first = nil
   for i = #filepath, 1, -1 do
     if string.sub(filepath, i, i) == separator then
