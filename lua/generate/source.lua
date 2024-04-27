@@ -83,7 +83,8 @@ local function get_implemenations(root)
 
   for _, node, _ in declaration_query:iter_captures(root, 0) do
     local text = ts.get_node_text(node, 0, {})
-    text = string.gsub(text, '%s+{.*', '')
+    text = string.gsub(text, '%).*', '')
+    text = text .. ')'
     table.insert(strings, text)
   end
 
@@ -101,7 +102,9 @@ function M.implement_methods(namespaces)
     for i = 1, #v['declarations'] do
       local declaration = v['declarations'][i]
       local implementation = declaration_to_implementation(declaration, name, M.header_bufnr)
-      if not vim.tbl_contains(existing_implemenations, implementation) then
+      local implementation_title = string.gsub(implementation, '%).*', '')
+      implementation_title = implementation_title .. ')'
+      if not vim.tbl_contains(existing_implemenations, implementation_title) then
         table.insert(strings, implementation .. brace_pattern)
       end
     end
