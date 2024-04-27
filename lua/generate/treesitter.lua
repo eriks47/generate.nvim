@@ -27,7 +27,7 @@ end
 -- @return boolean
 function M.is_function_declaration(node)
   local type = node:type()
-  if type == 'function_definition' then
+  if type == 'function_definition' or type == 'friend_declaration' then
     return false
   end
 
