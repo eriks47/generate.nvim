@@ -29,7 +29,7 @@ end, {
   nargs = 1,
   addr = 'other',
   complete = function()
-    return { 'implementations', 'declarations' }
+    return { 'implementations' }
   end,
 })
 
