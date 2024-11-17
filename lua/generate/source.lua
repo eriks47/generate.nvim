@@ -120,8 +120,7 @@ function M.implement_methods(namespaces)
   api.nvim_command(":edit")
 end
 
-function M.insert_header(header_path)
-  local source_path = fs.header_to_source(header_path)
+function M.insert_header(header_path, source_path)
   local name = fn.fnamemodify(header_path, ':t')
   local header_text = '#include "' .. name .. '"'
 

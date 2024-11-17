@@ -32,7 +32,7 @@ and the C++ parser, which can be installed via `:TSInstall cpp`
 require('lazy').setup({
   {
     'eriks47/generate.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' }
+    dependencies = { 'nvim-treesitter/nvim-treesitter' , "neovim/nvim-lspconfig"}
   }
 })
 ```
